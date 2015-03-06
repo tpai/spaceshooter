@@ -28,6 +28,7 @@ public class Enemy : MonoBehaviour {
 			else if(transform.tag == "Enemy") {
 				Instantiate(exploEnemyPrefab, transform.position, Quaternion.identity);
 			}
+			Destroy (other.gameObject);
 			Destroy (gameObject);
 		}
 	}
