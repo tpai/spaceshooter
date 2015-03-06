@@ -4,9 +4,10 @@ using System.Collections;
 public class EnemySpawner : MonoBehaviour {
 
 	public GameObject[] enemyPrefabs;
+	public float spawnSpeed = 1f;
 
 	void Start () {
-		InvokeRepeating ("SpawnNow", 0f, 1f);
+		InvokeRepeating ("SpawnNow", 1f, spawnSpeed);
 	}
 	
 	void Update () {

@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerShoot : MonoBehaviour {
+public class ShootLaser : MonoBehaviour {
 
 	[SerializeField]
 	GameObject boltPrefab;
 	public float timePerShoot = .5f;
 
 	void Start () {
-		InvokeRepeating ("ShootBolt", 0f, timePerShoot);
+		InvokeRepeating ("ShootBolt", 1f, timePerShoot);
 	}
 	
 	void ShootBolt () {
