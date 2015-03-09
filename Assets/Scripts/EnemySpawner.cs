@@ -6,12 +6,8 @@ public class EnemySpawner : MonoBehaviour {
 	public GameObject[] enemyPrefabs;
 	public float spawnSpeed = 1f;
 
-	void Start () {
+	public void StartSpawning () {
 		InvokeRepeating ("SpawnNow", 1f, spawnSpeed);
-	}
-	
-	void Update () {
-		
 	}
 
 	void SpawnNow () {

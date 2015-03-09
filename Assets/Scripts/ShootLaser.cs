@@ -7,7 +7,7 @@ public class ShootLaser : MonoBehaviour {
 	GameObject boltPrefab;
 	public float timePerShoot = .5f;
 
-	void Start () {
+	void StartShooting () {
 		InvokeRepeating ("ShootBolt", 1f, timePerShoot);
 	}
 	

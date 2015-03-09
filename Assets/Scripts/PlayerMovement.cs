@@ -11,16 +11,46 @@ public class PlayerMovement : MonoBehaviour {
 	}
 	public Done_Boundary boundary;
 
+	public int isLock = 0;
 	public float movementSpeed = 300f;
 	public float rotationSpeed = 5f;
 	public CNAbstractController MovementJoystick;
 
+	public void CallWaitForEnter ()
+	{
+		StartCoroutine ("WaitForEnter");
+	}
+
+	IEnumerator WaitForEnter ()
+	{
+		yield return new WaitForSeconds (.5f);
+		isLock = 2;
+		boundary.zMin = -5.4f;
+		transform.Find ("Laser_Gun").SendMessage("StartShooting");
+	}
+
 	void FixedUpdate()
 	{
-		var movement = new Vector3(
-			MovementJoystick.GetAxis("Horizontal"),
+		if (isLock == 1) {
+			boundary.zMin = -8f;
+			MoveWithEvent (transform.forward);
+		}
+		else if(isLock == 2) {
+			var movement = new Vector3 (
+				MovementJoystick.GetAxis ("Horizontal"),
+				0f,
+				MovementJoystick.GetAxis ("Vertical"));
+			CommonMovementMethod (movement);
+		}
+	}
+
+	void MoveWithEvent(Vector3 mov)
+	{
+		var movement = new Vector3 (
+			mov.x,
 			0f,
-			MovementJoystick.GetAxis("Vertical"));
+			mov.z
+		);
 		CommonMovementMethod(movement);
 	}
 
