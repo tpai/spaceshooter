@@ -4,20 +4,22 @@ using System.Collections;
 
 public class GameStart : MonoBehaviour {
 
-	public PlayerMovement pm;
-	public EnemySpawner es;
-	Text t;
+	public PlayerMovement playerMovement;
+	public EnemySpawner enemySpawner;
+	public Animator HUDAnimator;
+	Text text;
 
 	void Start () {
-		t = GetComponent<Text> ();
+		text = GetComponent<Text> ();
 	}
 
 	public void LetsPlay () {
-		es.StartSpawning ();
+		enemySpawner.StartSpawning ();
 
-		pm.isLock = 1;
-		pm.CallWaitForEnter ();
+		playerMovement.isLock = 1;
+		playerMovement.CallWaitForEnter ();
 
-		t.color = Color.clear;
+		text.color = Color.clear;
+		HUDAnimator.SetBool ("gamestart", true);
 	}
 }
