@@ -7,10 +7,12 @@ public class GameStart : MonoBehaviour {
 	public PlayerMovement playerMovement;
 	public EnemySpawner enemySpawner;
 	public Animator HUDAnimator;
+	Animator anim;
 	Text text;
 
 	void Start () {
 		text = GetComponent<Text> ();
+		anim = GetComponent<Animator> ();
 	}
 
 	public void LetsPlay () {
@@ -21,5 +23,7 @@ public class GameStart : MonoBehaviour {
 
 		text.color = Color.clear;
 		HUDAnimator.SetBool ("gamestart", true);
+		anim.SetBool ("show", false);
+		PlayerPrefs.SetInt("NowScore", 0);
 	}
 }

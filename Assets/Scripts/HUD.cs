@@ -6,13 +6,9 @@ public class HUD : MonoBehaviour {
 
 	[SerializeField]
 	Text topScore, nowScore;
-	static int topScoreValue, nowScoreValue;
+	int topScoreValue;
+	static int nowScoreValue;
 
-	void Start () {
-		PlayerPrefs.SetInt ("TopScore", 0);
-		PlayerPrefs.SetInt ("NowScore", 0);
-	}
-	
 	void Update () {
 		topScoreValue = PlayerPrefs.GetInt ("TopScore");
 		nowScoreValue = PlayerPrefs.GetInt ("NowScore");
